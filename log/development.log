@@ -4644,3 +4644,12 @@ Creating scope :unpublished. Overwriting existing method Product.unpublished.
 Creating scope :published. Overwriting existing method Product.published.
 Creating scope :unpublished. Overwriting existing method Product.unpublished.
 Creating scope :published. Overwriting existing method Product.published.
+<<<<<<< HEAD
+=======
+Creating scope :unpublished. Overwriting existing method Product.unpublished.
+Creating scope :published. Overwriting existing method Product.published.
+DEPRECATION WARNING: The factory_girl gem is deprecated. Please upgrade to factory_bot. See https://github.com/thoughtbot/factory_bot/blob/v4.9.0/UPGRADE_FROM_FACTORY_GIRL.md for further instructions. (called from <main> at /home/umer/Documents/ade/E-commerce/bin/rails:9)
+DEPRECATION WARNING: The factory_girl gem is deprecated. Please upgrade to factory_bot. See https://github.com/thoughtbot/factory_bot/blob/v4.9.0/UPGRADE_FROM_FACTORY_GIRL.md for further instructions. (called from <main> at /home/umer/Documents/ade/E-commerce/bin/rails:9)
+>>>>>>> Rspec
+Creating scope :unpublished. Overwriting existing method Product.unpublished.
+Creating scope :published. Overwriting existing method Product.published.
