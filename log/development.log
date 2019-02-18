@@ -4644,3 +4644,5 @@ Creating scope :unpublished. Overwriting existing method Product.unpublished.
 Creating scope :published. Overwriting existing method Product.published.
 Creating scope :unpublished. Overwriting existing method Product.unpublished.
 Creating scope :published. Overwriting existing method Product.published.
+Creating scope :unpublished. Overwriting existing method Product.unpublished.
+Creating scope :published. Overwriting existing method Product.published.
