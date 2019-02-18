@@ -1,0 +1,45 @@
+<div class="container" style="margin-top: 5%" >
+  <% if @current_cart.cart_items.empty? %>
+    <h1><%= link_to 'Place Order',products_path,class:"btn btn-primary btn-lg",:style=>"margin-left:45%"%></h1>
+    <%else %>
+    <h3><strong><%=link_to'Drop Cart',destroy_cart_items_cart_item_path%></strong></h3>
+    <h3>
+    <h3><strong><%=link_to'Debit /Credit',new_charge_path%></strong></h3>
+    <h3>
+      <strong style="float:right">Total Amount:<%= @current_cart.total_price.round(2)%>
+      </strong>
+    </h3>  
+    <h3>
+      <strong style="float:center"><%= link_to 'Order',add_order_items_order_path%></strong>
+    </h3>          
+    <h3><strong style="float:center">Cart Items:</strong></h3>          
+    <table class="table table-condensed">
+    	<thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Total Price</th>
+          <th>Quantity</th>
+          <th>Delete</th>
+
+        </tr>
+      </thead>
+      <% @cart_items.each do |c_i| %>
+        <tbody>
+          <tr>
+            <td><%= link_to c_i.product.name,product_path(c_i.product) %></td>
+            <% if c_i.product.discount<=0.0%> 
+            <td><%= c_i.product.total.round(2)%></td>
+            <%else%>
+            <td><del><%= c_i.product.total.round(2)%></del> | <%= c_i.product.total.round(2)-c_i.product.discount_price(c_i.product).round(2)%></td>
+            <%end%>
+            <td><%= c_i.amount.round(2) %></td>
+            <td><%= c_i.quantity %></td>
+             <td><%= link_to 'Destroy', c_i, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        </tbody>
+      <%end%>
+    </table>
+  <%end%>
+</div> 
+

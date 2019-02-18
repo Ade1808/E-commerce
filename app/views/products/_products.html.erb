@@ -1,0 +1,95 @@
+<section class="text-center mb-4" id="prod-table" >
+      
+        <!--Grid r ow-->
+        <div class="row wow fadeIn">
+          <% @products.each do |product|%>
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <%= image_tag product.image.url(:medium)%>
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="<%=%>" class="grey-text">
+                  <h5><%=link_to product.category.name, category_path(product.category)%></h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="<%= %>" class="dark-grey-text"> <%=link_to product.name,product_path(product)%>
+                      
+                    </a>
+                  </strong>
+                </h5>
+                <% if product.discount<=0.0%>
+                  <h4 class="font-weight-bold blue-text">
+                    <strong><%= product.price.round(2)%>$</strong>
+                  </h4>
+                  <h5 class="font-weight-bold blue-text">
+                    <%= link_to "click to see detail",product_path(product)%>
+                  </h5>
+                  <% if product.cart_item.present? %>
+                    <p class="lead">
+                      <span class="mr-1">
+                          <span>Stock : <%= product.stock.to_i-product.cart_item.quantity.to_i%></span>
+                      </span>
+                    </p>
+                  <%else%> 
+                    <p class="lead">
+                      <span class="mr-1">
+                          <span>Stock : <%= product.stock.to_i%></span>
+                      </span>
+                    </p>
+                  <%end%>
+                <%else%>
+                  <h4 class="font-weight-bold blue-text">
+                     <strong>original price : <del><%= product.total.round(2)%>$</del></strong>
+                  </h4>
+                  <h4 class="font-weight-bold blue-text">
+                    <strong>Now :<%=product.total.round(2) - product.discount_price(product).round(2)%>$</strong>
+                  </h4>
+                  <h4 class="font-weight-bold blue-text">
+                     <strong>Save : <%= product.discount_price(product).round(2) %>$</strong>
+                  </h4>
+                  <% if product.cart_item.present? %>
+                    <p class="lead">
+                      <span class="mr-1">
+                          <span>Stock : <%= product.stock.to_i-product.cart_item.quantity.to_i%></span>
+                      </span>
+                    </p>
+                  <%else%> 
+                    <p class="lead">
+                      <span class="mr-1">
+                          <span>Stock : <%= product.stock.to_i%></span>
+                      </span>
+                    </p>
+                  <%end%>
+                  <h5 class="font-weight-bold blue-text">
+                   <%= link_to "click to see detail",product_path(product)%>
+                  </h5>
+                <%end%>
+              </div>
+              <!--Card content-->
+                 
+            </div>
+            <!--Card-->
+ 
+          </div>
+          <!--Grid column-->
+
+         <%end%>
+
+        </div>
+        <!--Grid row-->
+
+      </section>

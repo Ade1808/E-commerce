@@ -1,0 +1,4 @@
+$('#section').empty();
+$('#section').append('<%= j render ("categoryproduct")%>');
+$('.badge').html('<%=@current_cart.total%>');
+$('.stock').html('<%= product.stock %>');

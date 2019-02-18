@@ -1,0 +1,12 @@
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <%= flash[:error] %>
+    <% end %>
+  </article>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Tick Tick Payment "
+          data-amount="<%= @current_cart.total_price%>"
+          data-locale="auto"></script>
+  <% end %> 

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<div style="margin-top: 5">
+  <p><strong style="margin-left: 40%">Your Order Has Been Placed</strong></p>
+  <p style="margin-left: 40%">
+    <strong>User:</strong>
+    <strong><%= @order.user.email %></strong>
+  </p>
+
+  <p style="margin-left: 40%">
+    <strong>Total amount:</strong>
+    <strong><%= @order.total_amount.round(2) %></strong>
+  </p>
+  <p style="margin-left: 40%">
+    <strong>Total Product:</strong>
+    <strong><%= @order.quantity %></strong>
+  </p>
+  <p><strong style="margin-left: 40%"><%= link_to 'Place An other Order' ,products_path%></strong> </p>
+  <p style="margin-left: 40%">
+    <strong >
+      <%= link_to 'Sign Out',destroy_user_session_path,method: :delete,class:"nav-link border border-light rounded waves-effect"%>
+    </strong>
+  </p>
+</div>
+<div>
+	<div class="container">
+  <h2>Order Items </h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @order_items.each do |order_item|%>
+      <tr>
+        <td><%= order_item.product.name%></td>
+        <td><%= order_item.product.price.round(2)%></td>
+        <td><%= order_item.quantity%></td>
+        <td><%= order_item.amount.round(2)%></td>
+      </tr>
+      <%end%>
+      </tbody>
+     </table>      
+  </div>
+</div>
+

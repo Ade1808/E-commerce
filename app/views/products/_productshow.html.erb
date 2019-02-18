@@ -1,0 +1,97 @@
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+      <!--Grid row-->
+      <div class="row wow fadeIn">        
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+          <%= image_tag @product.image.url, class:"img-fluid" %>
+        </div>
+        <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+          <h2>Specification</h2>
+          <!--Content-->
+          <div class="p-4">
+            <div class="mb-3">
+              <a href="">
+                <h3 ><%= @product.category.name%></h3>
+              </a>
+            </div>
+            <div class="mb-3"> 
+              <% @options.each do |option|%>
+              <h3 ><%=option.name%>:  
+              <%= option.value%>
+                <%end%>
+              </h3>
+            </div>
+             <%if @product.discount<=0.0%> 
+            <p class="lead">
+              <span class="mr-1">
+              <span>Price: $<%= @product.total.round(2)%></span>
+            </p>
+             <% if @product.cart_item.present? %>
+                <p class="lead">
+                  <span class="mr-1">
+                      <span>Stock : <%= @product.stock.to_i-@product.cart_item.quantity.to_i%></span>
+                  </span>
+                </p>
+              <%else%> 
+                <p class="lead">
+                  <span class="mr-1">
+                      <span>Stock : <%= @product.stock.to_i%></span>
+                  </span>
+                </p>
+              <%end%>
+            <%else%>
+              <p class="lead">
+                <span class="mr-1">
+                  <span>Original Price : <del>$<%= @product.total.round(2)%></del></span>
+                </span>
+              </p>
+               <p class="lead">
+                <span class="mr-1">
+                  <span> Now :<%= @product.total.round(2)-@product.discount_price(@product).round(2)%>$</span>
+                </span>
+              </p> 
+              <p class="lead">
+                <span class="mr-1">
+                  <span>Discount : <%= @product.discount.round(2)%>%</span>
+                </span>
+              </p>
+              <p class="lead">
+                <span class="mr-1">
+                  <span>Save : <%= @product.discount_price(@product).round(2)%>$</span>
+                </span>
+              </p>
+              <% if @product.cart_item.present? %>
+                <p class="lead">
+                  <span class="mr-1">
+                      <span>Stock : <%= @product.stock.to_i-@product.cart_item.quantity.to_i%></span>
+                  </span>
+                </p>
+              <%else%> 
+                <p class="lead">
+                  <span class="mr-1">
+                      <span>Stock : <%= @product.stock.to_i%></span>
+                  </span>
+                </p>
+              <%end%>
+            <%end%>
+            <p class="lead font-weight-bold">Description</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus!
+              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+             <%= form_with model: @cart_item ,remote:true do |form| %>
+             <%= form.label :quantity%>
+                <%= form.hidden_field :product_id,  value:@product.id%>
+                <%= form.number_field :quantity ,:value=>"1" ,:style=>"width:15%"%>
+                <%= form.submit 'Add To Cart' ,class:"btn btn-primary btn-md my-0 p"%>
+              <% end %>
+          </div>
+          <!--Content-->
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+  </script>
+
+
