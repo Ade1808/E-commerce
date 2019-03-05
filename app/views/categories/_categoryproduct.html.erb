@@ -20,7 +20,7 @@
               </h5>
               <% if product.discount<=0.0%>
                 <h4 class="font-weight-bold blue-text">
-                  <strong><%= product.price.round(2)%>$</strong>
+                  <strong>$<%= product.price.round(2)%></strong>
                 </h4>
                 <h5 class="font-weight-bold blue-text">
                   <%= link_to "click to see detail",product_path(product)%>
@@ -46,13 +46,13 @@
                 <%end%>
               <%else%>
                 <h4 class="font-weight-bold blue-text">
-                    <strong>original price : <del><%= product.total.round(2)%>$</del></strong>
+                    <strong>original price : <del>$<%= product.total.round(2)%></del></strong>
                 </h4>
                 <h4 class="font-weight-bold blue-text">
-                  <strong>Now :<%=product.total.round(2) - product.discount_price(product).round(2)%>$</strong>
+                  <strong>Now :$<%=product.total.round(2) - product.discount_price(product).round(2)%></strong>
                 </h4>
                 <h4 class="font-weight-bold blue-text">
-                  <strong>Save : <%= product.discount_price(product).round(2) %>$</strong>
+                  <strong>Save :$<%= product.discount_price(product).round(2) %></strong>
                 </h4>
                 <h5 class="font-weight-bold blue-text">
                   <%= link_to "click to see detail",product_path(product)%>

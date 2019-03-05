@@ -50,7 +50,7 @@
               </p>
                <p class="lead">
                 <span class="mr-1">
-                  <span> Now :<%= @product.total.round(2)-@product.discount_price(@product).round(2)%>$</span>
+                  <span> Now :$<%= @product.total.round(2)-@product.discount_price(@product).round(2)%></span>
                 </span>
               </p> 
               <p class="lead">
@@ -60,7 +60,7 @@
               </p>
               <p class="lead">
                 <span class="mr-1">
-                  <span>Save : <%= @product.discount_price(@product).round(2)%>$</span>
+                  <span>Save :$<%= @product.discount_price(@product).round(2)%></span>
                 </span>
               </p>
               <% if @product.cart_item.present? %>
