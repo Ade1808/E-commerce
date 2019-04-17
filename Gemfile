@@ -31,6 +31,7 @@ gem 'cancancan'
 gem 'rolify'
 gem 'hirb'
 gem 'client_side_validations' 
+gem 'aws-sdk', '~> 2.3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'bootstrap', '~> 4.1.3'
